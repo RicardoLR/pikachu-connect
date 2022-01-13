@@ -1,0 +1,83 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://spring.io/guides/gs-producing-web-service"
+           targetNamespace="http://spring.io/guides/gs-producing-web-service" elementFormDefault="qualified">
+
+    <xs:element name="getPokemonRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="name" type="xs:string"/>
+                <xs:element name="property" type="tns:props"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getPropsResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="all" type="tns:getPokemonResponse"/>
+                <xs:element name="abilities" type="tns:getPokemonAbilitiesResponse"/>
+                <xs:element name="id" type="tns:getPokemonIdResponse"/>
+                <xs:element name="baseExperience" type="tns:getPokemonBaseExperienceResponse"/>
+                <xs:element name="heldItems" type="tns:getPokemonHeldItemsResponse"/>
+                <xs:element name="locationArea" type="tns:getPokemonLocationAreaEncountersResponse"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="getPokemonResponse">
+        <xs:sequence>
+            <xs:element name="data" type="tns:pokemon"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="getPokemonAbilitiesResponse">
+        <xs:sequence>
+            <xs:element name="data" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="getPokemonIdResponse">
+        <xs:sequence>
+            <xs:element name="data" type="xs:integer"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="getPokemonBaseExperienceResponse">
+        <xs:sequence>
+            <xs:element name="data" type="xs:integer"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="getPokemonHeldItemsResponse">
+        <xs:sequence>
+            <xs:element name="data" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="getPokemonLocationAreaEncountersResponse">
+        <xs:sequence>
+            <xs:element name="data" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="props">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="all"/>
+            <xs:enumeration value="id"/>
+            <xs:enumeration value="abilities"/>
+            <xs:enumeration value="baseExperience"/>
+            <xs:enumeration value="heldItems"/>
+            <xs:enumeration value="locationAreaEncounters"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="pokemon">
+        <xs:sequence>
+            <xs:element name="id" type="xs:integer"/>
+            <xs:element name="abilities" type="xs:string"/>
+            <xs:element name="baseExperience" type="xs:integer"/>
+            <xs:element name="heldItems" type="xs:string"/>
+            <xs:element name="locationAreaEncounters" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>
